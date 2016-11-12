@@ -2,7 +2,7 @@
 from boto3.session import Session
 import boto3
 
-session = Session(aws_access_key_id='AKIAJHXEMWF22W2ECNUA', aws_secret_access_key='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')
+session = Session(aws_access_key_id='xxxxxxxxxx', aws_secret_access_key='xxxxxxxxxx')
 
 s3 = session.resource('s3')
 

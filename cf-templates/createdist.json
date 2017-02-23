@@ -1,0 +1,27 @@
+{
+  "Resources" : {
+    "mybuckam" : {
+      "Type" : "AWS::S3::Bucket"
+    },
+    "amdistro" : {
+      "Type" : "AWS::CloudFront::Distribution",
+      "Properties" : {
+        "DistributionConfig" : {
+          "Origins" : [{
+            "DomainName" : {"Fn::GetAtt" : [ "Mybuckam" , "DomainName"]},
+            "Id" : "s3originam",
+            "S3OriginConfig" : { }
+          }],
+          "Enabled" : "true",
+          "DefaultCacheBehavior" : {
+            "TargetOriginId" : "s3originam",
+            "ForwardedValues" : {
+              "QueryString" : "false"
+            },
+            "ViewerProtocolPolicy" : "allow-all"
+          }
+        }
+      }
+    }
+  }
+}
